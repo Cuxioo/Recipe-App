@@ -7,41 +7,81 @@
 </head>
 <body>
 
-<button class="back-btn" onclick="window.location.href='index.html'">
-    ← Back
-</button>
+    <div class="page-container">
 
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goBack()">
+            <img src="assets/icons/back.png" alt="Back">
+        </button>
 
-<div class="recipe-box">
-    <h3>Ingredients</h3>
-    <p id="recipeIngredients"></p>
-</div>
+        <!-- Recipe Title -->
+        <h1 id="recipeTitle"></h1>
 
-<div class="recipe-box">
-    <h3>Description</h3>
-    <p id="recipeDescription"></p>
-</div>
+        <!-- Description -->
+        <div class="recipe-box">
+            <h3>Description</h3>
+            <p id="recipeDescription"></p>
+        </div>
 
-<div class="recipe-box macros">
-    <div class="macro">
-        <span class="macro-label">Calories</span>
-        <span id="caloriesValue"></span>
+        <!-- Ingredients -->
+        <div class="recipe-box">
+            <h3>Ingredients</h3>
+            <ul id="ingredientList"></ul>
+        </div>
+
+        <!-- Macros -->
+        <div class="recipe-box macros">
+            <div class="macro">
+                <span id="calories"></span>
+                <small>Calories</small>
+            </div>
+            <div class="macro">
+                <span id="protein"></span>
+                <small>Protein</small>
+            </div>
+            <div class="macro">
+                <span id="carbs"></span>
+                <small>Carbs</small>
+            </div>
+            <div class="macro">
+                <span id="fat"></span>
+                <small>Fat</small>
+            </div>
+        </div>
+
     </div>
-    <div class="macro">
-        <span class="macro-label">Protein</span>
-        <span id="proteinValue"></span>
-    </div>
-    <div class="macro">
-        <span class="macro-label">Carbs</span>
-        <span id="carbsValue"></span>
-    </div>
-    <div class="macro">
-        <span class="macro-label">Fat</span>
-        <span id="fatValue"></span>
-    </div>
-</div>
 
+    <script>
+        function getRecipes() {
+            return JSON.parse(localStorage.getItem("recipes")) || [];
+        }
 
-<script src="js/recipe.js"></script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const recipeId = Number(params.get("id"));
+        const recipe = getRecipes().find(r => r.id === recipeId);
+
+        if (recipe) {
+            document.getElementById("recipeTitle").textContent = recipe.name;
+            document.getElementById("recipeDescription").textContent = recipe.description;
+
+            const list = document.getElementById("ingredientList");
+            recipe.ingredients.split("\n").forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                list.appendChild(li);
+            });
+
+            document.getElementById("calories").textContent = recipe.macros.calories;
+            document.getElementById("protein").textContent = recipe.macros.protein;
+            document.getElementById("carbs").textContent = recipe.macros.carbs;
+            document.getElementById("fat").textContent = recipe.macros.fat;
+        }
+    </script>
+
 </body>
 </html>
+

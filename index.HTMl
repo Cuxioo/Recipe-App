@@ -2,51 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Organizer</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="page-container">
+    <h1>My Recipes</h1>
 
-<h1>My Recipes</h1>
-<input 
-  type="text" 
-  id="searchInput" 
-  placeholder="Search recipes..."
->
+    <!-- Search -->
+    <input type="text" id="searchInput" placeholder="Search recipes...">
 
-<div id="recipeList"></div>
-
-
-<button id="openModalBtn">+ Create Recipe</button>
-
-<!-- MODAL -->
-<div id="modal" class="modal hidden">
-    <div class="modal-content">
-        <h2>New Recipe</h2>
-
-        <input type="text" id="nameInput" placeholder="Recipe Name">
-        <textarea id="ingredientsInput" placeholder="Ingredients"></textarea>
-        <textarea id="descriptionInput" placeholder="Description"></textarea>
-        <h3>Macros</h3>
-
-        <input type="number" id="caloriesInput" placeholder="Calories">
-        <input type="number" id="proteinInput" placeholder="Protein (g)">
-        <input type="number" id="carbsInput" placeholder="Carbs (g)">
-        <input type="number" id="fatInput" placeholder="Fat (g)">
-
-
-        <div class="modal-actions">
-            <button id="saveRecipeBtn" class="primary-btn">
-                <span class="btn-text">Save</span>
-            </button>
-            <button id="closeModalBtn" class="secondary-btn">
-                <span class="btn-text">Cancel</span>
-            </button>
-        </div>
-
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+        <button id="openFilterBtn" class="secondary-btn">Filters</button>
+        <button id="favoritesFilterBtn" class="secondary-btn">⭐ Favorites</button>
+        <button id="showAllBtn" class="secondary-btn">All Recipes</button>
     </div>
-</div>
 
+    <!-- Recipe List -->
+    <div id="recipeList"></div>
+
+    <!-- Create Recipe Button -->
+    <button id="openModalBtn" class="primary-btn">+ Create Recipe</button>
+
+    <!-- MODAL: Create / Edit Recipe -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modalTitle">New Recipe</h2>
+            <input type="text" id="nameInput" placeholder="Recipe Name">
+            <textarea id="ingredientsInput" placeholder="Ingredients (comma separated)"></textarea>
+            <textarea id="descriptionInput" placeholder="Description"></textarea>
+            <h3>Macros</h3>
+            <input type="number" id="caloriesInput" placeholder="Calories">
+            <input type="number" id="proteinInput" placeholder="Protein (g)">
+            <input type="number" id="carbsInput" placeholder="Carbs (g)">
+            <input type="number" id="fatInput" placeholder="Fat (g)">
+            <div class="modal-actions">
+                <button id="saveRecipeBtn" class="primary-btn">Save</button>
+                <button id="closeModalBtn" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FILTER MODAL -->
+    <div id="filterModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Filter Recipes</h2>
+            <input type="number" id="filterCalories" placeholder="Max Calories">
+            <input type="number" id="filterProtein" placeholder="Min Protein">
+            <input type="number" id="filterCarbs" placeholder="Max Carbs">
+            <input type="number" id="filterFat" placeholder="Max Fat">
+            <div class="modal-actions">
+                <button id="applyFilterBtn" class="primary-btn">Apply</button>
+                <button id="closeFilterBtn" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RECIPE POPUP VIEW -->
+    <div id="recipeView" class="modal hidden">
+        <div class="modal-content">
+            <button id="backBtn" class="back-btn">Back</button>
+            <h2 id="recipeTitle"></h2>
+            <div class="recipe-box">
+                <h3>Ingredients</h3>
+                <ul id="recipeIngredients"></ul>
+            </div>
+            <div class="recipe-box">
+                <h3>Description</h3>
+                <p id="recipeDescription"></p>
+            </div>
+            <div class="macros">
+                <div class="macro"><strong>Calories</strong><span id="recipeCalories"></span></div>
+                <div class="macro"><strong>Protein</strong><span id="recipeProtein"></span></div>
+                <div class="macro"><strong>Carbs</strong><span id="recipeCarbs"></span></div>
+                <div class="macro"><strong>Fat</strong><span id="recipeFat"></span></div>
+            </div>
+        </div>
+    </div>
+
+</div>
 <script src="js/main.js"></script>
 </body>
 </html>
