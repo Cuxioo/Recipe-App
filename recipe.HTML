@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<button class="back-btn" onclick="window.location.href='index.html'">
+    ← Back
+</button>
+
+
+<div class="recipe-box">
+    <h3>Ingredients</h3>
+    <p id="recipeIngredients"></p>
+</div>
+
+<div class="recipe-box">
+    <h3>Description</h3>
+    <p id="recipeDescription"></p>
+</div>
+
+<div class="recipe-box macros">
+    <div class="macro">
+        <span class="macro-label">Calories</span>
+        <span id="caloriesValue"></span>
+    </div>
+    <div class="macro">
+        <span class="macro-label">Protein</span>
+        <span id="proteinValue"></span>
+    </div>
+    <div class="macro">
+        <span class="macro-label">Carbs</span>
+        <span id="carbsValue"></span>
+    </div>
+    <div class="macro">
+        <span class="macro-label">Fat</span>
+        <span id="fatValue"></span>
+    </div>
+</div>
+
+
+<script src="js/recipe.js"></script>
+</body>
+</html>

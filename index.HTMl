@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Organizer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>My Recipes</h1>
+<input 
+  type="text" 
+  id="searchInput" 
+  placeholder="Search recipes..."
+>
+
+<div id="recipeList"></div>
+
+
+<button id="openModalBtn">+ Create Recipe</button>
+
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>New Recipe</h2>
+
+        <input type="text" id="nameInput" placeholder="Recipe Name">
+        <textarea id="ingredientsInput" placeholder="Ingredients"></textarea>
+        <textarea id="descriptionInput" placeholder="Description"></textarea>
+        <h3>Macros</h3>
+
+        <input type="number" id="caloriesInput" placeholder="Calories">
+        <input type="number" id="proteinInput" placeholder="Protein (g)">
+        <input type="number" id="carbsInput" placeholder="Carbs (g)">
+        <input type="number" id="fatInput" placeholder="Fat (g)">
+
+
+        <div class="modal-actions">
+            <button id="saveRecipeBtn" class="primary-btn">
+                <span class="btn-text">Save</span>
+            </button>
+            <button id="closeModalBtn" class="secondary-btn">
+                <span class="btn-text">Cancel</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
