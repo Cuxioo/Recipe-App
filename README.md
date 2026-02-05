@@ -1,6 +1,6 @@
 # Recipe Organizing Web App
 
-A mobile recipe organizer I built while learning web develoment outside of school.
+A mobile recipe organizer I built while learning web development outside of school.
 
 ## Features
 • Create, edit, delete recipes  
