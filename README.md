@@ -19,7 +19,7 @@ JavaScript
 Local Storage API
 
 ## Purpose
-Built as my learning project to practice UI layouts, logic, and mobile deisgn. But also for my Mother And Grandma, who has a habit of still wriitng recipes on a paper.
+Built as my learning project to practice UI layouts, logic, and mobile design. But also for my mother And grandma, who has a habit of still writing recipes on a paper.
 
 ## Live Demo
 https://cuxioo.github.io/Recipe-App/index.HTMl
