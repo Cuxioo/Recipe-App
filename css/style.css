@@ -1,7 +1,3 @@
-/* ===============================
-   GLOBAL
-   =============================== */
-
 * {
     box-sizing: border-box;
 }
@@ -12,28 +8,22 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* ===============================
-   PAGE CONTAINER
-   =============================== */
-/* Designer: App width = 360px–420px */
 .page-container {
-    max-width: 420px;
-    margin: 0 auto;
-    padding: 16px;
+    min-height: 100vh;
+
+    background-image: url("../images/Homescreen\ Background.png");
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+
+    padding: 1rem;
 }
 
-/* ===============================
-   HEADER
-   =============================== */
 .app-title {
     text-align: center;
     margin-bottom: 12px;
 }
 
-/* ===============================
-   SEARCH
-   =============================== */
-/* Designer: Search = 100% x 44px */
 .search-input {
     width: 100%;
     height: 44px;
@@ -43,10 +33,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* ===============================
-   FILTER BAR
-   =============================== */
-/* Designer: Buttons = 3 × 100px */
 .filter-buttons {
     display: flex;
     gap: 8px;
@@ -58,19 +44,12 @@ body {
     height: 40px;
 }
 
-/* ===============================
-   RECIPE LIST
-   =============================== */
 .recipe-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-/* ===============================
-   RECIPE CARD
-   =============================== */
-/* Designer: Card = 100% x 72px collapsed */
 .recipe-card {
     width: 100%;
     min-height: 72px;
@@ -80,6 +59,14 @@ body {
     border: 1px solid #ddd;
     cursor: pointer;
     transition: box-shadow 0.2s ease;
+
+    background-image: url("../images/Recipe\ Card.png");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-weight: bold;
+    color: white
 }
 
 .recipe-card.selected {
@@ -87,10 +74,6 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* ===============================
-   ACTIONS
-   =============================== */
-/* Designer: Action tray = 100% x 44px */
 .recipe-actions {
     display: flex;
     gap: 6px;
@@ -109,10 +92,6 @@ body {
     transform: translateY(0);
 }
 
-/* ===============================
-   BUTTONS
-   =============================== */
-/* Designer: Default button = 90x36 */
 button {
     height: 36px;
     padding: 0 12px;
@@ -130,19 +109,12 @@ button {
     background: #eee;
 }
 
-/* ===============================
-   CREATE BUTTON
-   =============================== */
-/* Designer: CTA = 100% x 48px */
 .create-btn {
     width: 100%;
     height: 48px;
     margin-top: 16px;
 }
 
-/* ===============================
-   MODALS
-   =============================== */
 .modal {
     position: fixed;
     inset: 0;
@@ -157,19 +129,31 @@ button {
     display: none;
 }
 
-/* Designer: Modal = 360px wide */
 .modal-content {
     width: 360px;
     max-width: 92%;
-    background: #fff;
-    border-radius: 16px;
+    border-radius: 18px;
     padding: 16px;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* ===============================
-   INPUTS
-   =============================== */
-/* Designer: Inputs = 100% x 44px */
+#modal .modal-content {
+    background-image: url("../images/Filter Background.png");
+}
+
+#filterModal .modal-content {
+    background-image: url("../images/Filter Background.png");
+}
+
+#recipeView .modal-content {
+    background-image: url("../images/Filter\ Background.png");
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
 input,
 textarea {
     width: 100%;
@@ -177,44 +161,37 @@ textarea {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    color: #000;
 }
 
-/* ===============================
-   MODAL ACTIONS
-   =============================== */
 .modal-actions {
     display: flex;
     justify-content: flex-end;
     gap: 8px;
 }
 
-/* ===============================
-   RECIPE VIEW
-   =============================== */
 .recipe-view {
     max-height: 85vh;
     overflow-y: auto;
 }
 
-/* ===============================
-   RECIPE BOX
-   =============================== */
-/* Designer: Box = 100% x auto */
 .recipe-box {
     margin-bottom: 12px;
 }
 
-/* ===============================
-   MACROS
-   =============================== */
-/* Designer: Macro box = 72x72 */
 .macros {
     display: flex;
     justify-content: space-between;
 }
 
 .macro {
+    background-image: url("../images/Macro Background1.png");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
     width: 72px;
     height: 72px;
     border-radius: 14px;
@@ -225,15 +202,169 @@ textarea {
     align-items: center;
 }
 
-/* ===============================
-   BACK BUTTON
-   =============================== */
-/* Designer: Back = 88x40 */
 .back-btn {
-    width: 88px;
+    width: 120px;        
+    height: 45px;         
+    border-radius: 12px;
+
+    background-image: url("../images/Back\ Button.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: none;
+    cursor: pointer;
+
+    color: transparent; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.back-btn:active {
+    transform: translateY(1px);
+}
+
+.create-btn {
+    width: 100%;
+    height: 56px;               
+    border-radius: 14px;
+    border: none;
+
+    background-image: url("../images/Create Recipe Button.png");
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;                
+    font-weight: bold;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.delete-btn {
+    width: 40px;
     height: 40px;
-    margin-bottom: 10px;
+
+    background-image: url("../images/Trash\ Button.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
     border-radius: 10px;
-    border: 1px solid #ccc;
-    background: #fff;
+
+    position: relative;
+    color: white;
+    font-size: 12px;
+}
+
+.edit-btn {
+    width: 40px;
+    height: 40px;
+
+    background-image: url("../images/Edit\ Button.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 10px;
+
+    position: relative;
+    color: white;
+    font-size: 12px;
+}
+
+.favorite-btn {
+    width: 40px;
+    height: 40px;
+
+    background-image: url("../images/Favorite\ Button.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 10px;
+
+    position: relative;
+    color: white;
+    font-size: 12px;
+}
+
+.open-btn {
+    width: 40px;
+    height: 40px;
+
+    background-image: url("../images/Open\ Button.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 10px;
+
+    position: relative;
+    color: white;
+    font-size: 12px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.filter-btn {
+    width: 110px;
+    height: 44px;
+
+    border-radius: 12px;
+    border: none;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+.filter-btn:active {
+    transform: translateY(1px);
+}
+.filter-open {
+    background-image: url("../images/Filter\ Button.png");
+}
+
+.filter-favorite {
+    background-image: url("../images/Filter\ Button.png");
+}
+
+.filter-all {
+    background-image: url("../images/Filter\ Button.png");
 }

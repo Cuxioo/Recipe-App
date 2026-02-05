@@ -3,7 +3,7 @@ const recipeId = Number(params.get("id"));
 
 const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
 const recipe = recipes.find(r => r.id === recipeId);
-// Ensure macros exist (backward compatibility)
+
 if (!recipe.macros) {
     recipe.macros = {
         calories: 0,

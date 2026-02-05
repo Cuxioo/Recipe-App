@@ -27,7 +27,7 @@ const showAllBtn = document.getElementById("showAllBtn");
 
 let editingRecipeId = null;
 
-// --- Local Storage Helpers ---
+// Local Storage
 function getRecipes() {
     return JSON.parse(localStorage.getItem("recipes")) || [];
 }
@@ -35,7 +35,7 @@ function saveRecipes(recipes) {
     localStorage.setItem("recipes", JSON.stringify(recipes));
 }
 
-// --- Render Recipes ---
+// Render Recipes
 function renderRecipes(recipes = getRecipes()) {
     recipeList.innerHTML = "";
     recipes.forEach(recipe => {
@@ -53,7 +53,6 @@ function renderRecipes(recipes = getRecipes()) {
         const favBtn = document.createElement("button");
         favBtn.className = "favorite-btn icon-btn";
         const star = document.createElement("img");
-        star.src = recipe.favorite ? "assets/icons/star-filled.png" : "assets/icons/star-empty.png";
         favBtn.appendChild(star);
         favBtn.onclick = e => {
             e.stopPropagation();
@@ -65,17 +64,17 @@ function renderRecipes(recipes = getRecipes()) {
 
         // Open
         const openBtn = document.createElement("button");
-        openBtn.textContent = "Open";
+        openBtn.className = "icon-btn open-btn";
         openBtn.onclick = e => { e.stopPropagation(); showRecipe(recipe); };
 
         // Edit
         const editBtn = document.createElement("button");
-        editBtn.textContent = "Edit";
+        editBtn.className = "icon-btn edit-btn";
         editBtn.onclick = e => { e.stopPropagation(); openEditModal(recipe); };
 
         // Delete
         const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
+        deleteBtn.className = "icon-btn delete-btn";
         deleteBtn.onclick = e => { e.stopPropagation(); deleteRecipe(recipe.id); };
 
         actions.append(favBtn, openBtn, editBtn, deleteBtn);
@@ -91,7 +90,7 @@ function renderRecipes(recipes = getRecipes()) {
     });
 }
 
-// --- Recipe Popup View ---
+// Recipe Popup View
 function showRecipe(recipe) {
     recipeView.classList.remove("hidden");
     recipeTitle.textContent = recipe.name;
@@ -104,7 +103,7 @@ function showRecipe(recipe) {
 }
 backBtn.onclick = () => recipeView.classList.add("hidden");
 
-// --- Create/Edit Recipe ---
+// Create/Edit Recipe 
 openModalBtn.onclick = () => {
     editingRecipeId = null;
     modal.classList.remove("hidden");
@@ -151,26 +150,33 @@ function openEditModal(recipe) {
     document.getElementById("fatInput").value = recipe.macros?.fat || "";
 }
 
-// --- Delete Recipe ---
+// Delete Recipe
 function deleteRecipe(id) {
     const recipes = getRecipes().filter(r => r.id !== id);
     saveRecipes(recipes);
     renderRecipes();
 }
 
-// --- Search ---
-searchInput.oninput = () => renderRecipes();
+// Search
+searchInput.oninput = () => {
+    const query = searchInput.value.toLowerCase();
+    const recipes = getRecipes().filter(r =>
+        r.name.toLowerCase().includes(query)
+    );
+    renderRecipes(recipes);
+};
 
-// --- Favorites Filter ---
+
+// Favorites Filter
 favoritesFilterBtn.onclick = () => {
     const recipes = getRecipes().filter(r => r.favorite);
     renderRecipes(recipes);
 };
 
-// --- Show All ---
+// Show All
 showAllBtn.onclick = () => renderRecipes();
 
-// --- Filter Modal ---
+// Filter Modal
 openFilterBtn.onclick = () => filterModal.classList.remove("hidden");
 closeFilterBtn.onclick = () => filterModal.classList.add("hidden");
 applyFilterBtn.onclick = () => {
