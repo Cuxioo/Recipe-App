@@ -6,14 +6,18 @@ body {
     margin: 0;
     background: #f6f6f6;
     font-family: Arial, sans-serif;
+
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .page-container {
     min-height: 100vh;
+    min-height: 100dvh;
 
     background-image: url("../images/Homescreen\ Background.png");
     background-size: cover;       
-    background-position: center;  
+    background-position: top center;  
     background-repeat: no-repeat; 
 
     padding: 1rem;
